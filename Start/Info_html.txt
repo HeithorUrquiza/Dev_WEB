@@ -46,4 +46,25 @@ Anatomia do Documento HTML
     </body>
     </html>
 
+----------------------------------------
+Citações HTML
+
+    <blockquote>
+    <cite>
+    <q>
+
+----------------------------------------
+Abreviações
+
+    <abbr>
+
+----------------------------------------
+Códigos de computador
+    <code>
+    <pre>
+
+----------------------------------------
+Elementos Genéricos
+    <div>
+    <span>
 -->
