@@ -1,0 +1,49 @@
+<!-- Comando para inserir comentários 
+Hypertext Markup Language -> HTML
+
+----------------------------------------
+<h1> abertura da tag; </h1> fechamento da tag
+<img> Elemento vazio
+
+* Atributos booleanos não precisam de conteúdo precisam
+* Aconselhável sempre usar aspas duplas 
+
+----------------------------------------
+Atributos globais mais utilizados
+
+    <div>....</div>
+    - class
+    - contenteditable (true or false)
+    - data-*
+    - hidden
+    - id
+    - style
+    - tambindex
+    - title
+
+----------------------------------------
+Alguns caracteres reservados
+
+    - &lt; = <
+    - &gt; = >
+    - &quot; = "
+    - &apos; = '
+    - &amp; = &
+    
+----------------------------------------
+Anatomia do Documento HTML
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        
+    </body>
+    </html>
+
+-->
