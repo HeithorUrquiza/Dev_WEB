@@ -1,35 +1,175 @@
 <!--
-<form >
-    <fieldset>
-        <legend> Contato </legend>
-        <label for="Nome">
+    <form >
+        <fieldset>
+            <legend> Contato </legend>
+            <label for="Nome">
+                Nome:
+            </label>
+            <input id="Nome" type="">
+        </fieldset>
+    </form>
+-->
+
+
+<!--
+    <form action="">
+        <label for="">
             Nome:
+            <input type="text">
         </label>
-        <input id="Nome" type="">
+    </form>
+-->
+
+
+<!--
+    <form action="" id="submeter">
+        <input type="text" value="">
+        <button type="reset">Limpar</button>
+    </form>
+    <button type="submit" nome="button" form="submeter">Enviar</button>
+    <button autofocus>Enviar</button>
+    <button disabled> Enviar</button>
+-->
+
+
+<!--
+    <input type="text" list="fruitsdata" placeholder="Escolha uma fruta">
+    <datalist id="fruitsdata">
+        <option>morango</option>
+        <option>laranja</option>
+        <option>maça</option>
+        <option>pera</option>
+    </datalist>
+-->
+
+
+<!--
+    - autocomplete, autofocus, disable, readonly (quase todos), value, form (quase todos), name, required (quase todos), placeholder (quase todos)
+
+    <input type="email" autocomplete="email" autofocus value="texto" required>
+    <input type="password" placeholder="Digite sua senha" required>
+
+-->
+
+
+<!--
+    INPUT TIPO PASSWORD
+
+    <form action="">
+        <input type="password" 
+            minlength="4"
+            maxlength="8"
+            size="8"
+            pattern="[0-9a-fA-F]{4,8}"
+            title="Coloque HEX de no mínimo 4 e no máximo 8 caracteres"
+            placeholder="Sua senha"
+            required
+            inputmode="numeric">
+
+        <button type="submit">Enviar</button>
+    </form>
+-->
+
+
+<!--
+    INPUT TIPO EMAIL
+
+    <form action="">
+        <input type="email"
+        required
+        minlength="8"
+        maxlength="255"
+        size="30"
+        title="Somente gmail"
+        pattern=".+@gamil\.com\br"
+        >
+        <button type="submit">Enviar</button>
+    </form>
+-->
+
+
+<!--
+    INPUT TIPO URL  
+
+    <form action="">
+        <input type="url"
+        placeholder="http://example.com"
+        required>
+        <button type="submit">Enviar</button>
+    </form>
+-->
+
+
+<!--
+    INPUT TIPO FILE E COLOR
+
+    <form action="" method="post" enctype="multipart/form-data">
+        <input type="file" 
+        accept=".java"
+        multiple
+        >
+    </form>
+
+    <form action="">
+        <input type="color" value="#00000">
+    </form>
+-->
+
+
+<!--
+    INPUT TIPO CHECKBOX
+
+    <form action="">
+        <label for="subscribe">Receber notificações</label>
+        <input type="checkbox" name="subscribe" id="subscribe"
+        checked>
+    </form>
+
+    <fieldset>
+        <legend>Choose your preference</legend>
+        <div>
+            <input type="checkbox" id="coding" name="preference" value="coding" checked>
+            <label for="coding">Coding</label>
+        </div>
+        <div>
+            <input type="checkbox" name="preference" id="music" value="music">
+            <label for="music">Music</label>
+        </div>
     </fieldset>
-</form>
 -->
 
 
 <!--
-<form action="">
-    <label for="">
-        Nome:
-        <input type="text">
-    </label>
-</form>
+    Invisível ao usuário
+    <input type="hidden" name="id" value="8">
 -->
 
 
 <!--
-<form action="" id="submeter">
-    <input type="text" value="">
-    <button type="reset">Limpar</button>
-</form>
-<button type="submit" nome="button" form="submeter">Enviar</button>
-<button autofocus>Enviar</button>
-<button disabled> Enviar</button>
+    INPUT TIPO RADIO
+
+    <fieldset>
+        <legend>Do you want coffee?</legend>
+
+        <label for="yep">Yes</label>
+        <input type="radio" name="coffee" id="yep" value="yes">
+
+        <label for="nop">No</label>
+        <input type="radio" name="coffee" id="npo" value="no">
+    </fieldset>
 -->
 
+<!--
+    CAIXA DE TEXTO
 
-<input type="text">
+    <label for="message">Mensagem</label>
+    <textarea 
+        name="message" 
+        id="message" 
+        cols="30" 
+        rows="5"
+        minlength="4"
+        maxlength="50"
+        wrap="soft">
+    </textarea>
+-->
