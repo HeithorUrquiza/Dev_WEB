@@ -8,4 +8,6 @@
     - Array: ['Maicon', 36]
 
     * Primitivos: Não sofrem alterações
+
+    * const -> Palavra chave para criar uma constante no programa
 */

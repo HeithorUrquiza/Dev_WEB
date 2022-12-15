@@ -1,3 +1,4 @@
+// Números pares e ímpares no console.log
 {
     console.log("Números ímpares")
     console.log(1) // valor literal
