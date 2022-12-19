@@ -15,4 +15,43 @@
 
     TEMPLATE STRING
     `Olá ${nome}!`
+
+    ------------------------------------------------------------------------------
+
+    FUNÇÃO EM JS
+
+    - Função sem retorno
+    function imprimirSoma(a, b) {
+        console.log(a + b)
+    }
+
+    - Função com retorno
+    function soma(a, b = 0) {
+        return a + b
+    }
+
+    - Armazenando função em uma variável
+    const somarValores = function (a, b){
+        console.log(a + b)
+    }
+    
+    - Armazenando função arrow em uma variável
+    const soma = (a, b) => {
+        return a + b
+    }
+
+    - Retorno implícito (valido para funções de uma única linha)
+    const subtracao = (a, b) => a - b
+
+    ------------------------------------------------------------------------------
+
+    VARIÁVEL VAR
+
+    - 2 escopos: Ou global (visível para todos), ou função
+    - Evitar o escopo global (variáveis globais)
 */
+
+
+
+
+
