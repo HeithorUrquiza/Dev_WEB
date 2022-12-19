@@ -14,6 +14,7 @@
     ------------------------------------------------------------------------------
 
     TEMPLATE STRING
+
     `Olá ${nome}!`
 
     ------------------------------------------------------------------------------
@@ -47,10 +48,41 @@
 
     VARIÁVEL VAR
 
-    - 2 escopos: Ou global (visível para todos), ou função
+    - 2 escopos: Ou global (visível para todos), ou função (visível e acessada apenas dentro da função)
     - Evitar o escopo global (variáveis globais)
-*/
+    - Pode ter seu valor acessado apesar de ser usado em um laço de repetição
+    - Hoisting: efeito de issamento. A variável é "jogada para cima" e executada antes (não recomendado usar)
 
+    
+    VARIÁVEL LET
+    
+    - É afetado pelo escopo de bloco {}
+    - 3 escopos: Global, de função e de bloco
+    - Não pode ter seu valor acessado se usado em um laço de repetição
+
+    ------------------------------------------------------------------------------
+
+    OPERADORES
+
+    - Destructuring
+    const pessoa = {
+        nome: 'Ana',
+        idade: 5,
+        endereco: {
+            logradouro: 'Rua ABC',
+            numero: 121
+        }
+    }
+
+    const {nome: n, idade: i} = pessoa //Extraindo dados do objeto
+    const {sobrenome, bemHumorada = true} = pessoa //Predefinindo valores 
+    const {endereco: {logradouro, numero} } = pessoa //Desestruturando um dado aninhado
+    const [n1, n2, n3,n4, n5, n6 = 0] = [10, 9, 7 ,8] //Desestruturando um array
+
+    */
+
+
+    
 
 
 
