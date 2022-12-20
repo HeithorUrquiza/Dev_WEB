@@ -149,5 +149,4 @@
     const obj = {Nome: 'Roberto'}
     console.log(imprimirNomegritado(obj))
 
-    */
-
+*/
