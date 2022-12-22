@@ -102,8 +102,98 @@
     }
     new Pessoa
 
+
+    --> This com função arrow ele não varia
+
+    function Pessoa(){
+        this.idade = 0
+        
+        setInterval(() =>{
+            this.idade++
+            console.log(this.idade)
+        }, 1000)
+    }
+    new Pessoa
+
+
+    --> Diferenças no uso do This
+
+    let comparaComThis = function(param){  //Mexendo com escopo global
+        console.log(this === param)
+    }
+    const obj = {}
+    comparaComThis = comparaComThis.bind(obj)
+    comparaComThis(obj)
+
+    let comparaComThisArrow = param => console.log(this === param)  //Aponta para o módulo corrente
+    comparaComThisArrow(module.exports)
+
     _________________________________________________________________________________________________________________________________
+
+    FUNÇÃO ANÔNIMA
+
+    - Basicamente uma função sem nome
+    - Funções arrow sempre são anônimas
+
+    const soma = function (x, y){
+        return x + y
+    }
+
+    const imprimirResultado = function (a, b, operacao = soma){
+        console.log(operacao(a, b))
+    }
+    imprimirResultado(3, 4, (x, y) => x * y)
+
+    _________________________________________________________________________________________________________________________________
+
+    FUNÇÃO CALLBACK
+
+    - Uma função que é chamada dentro de um evento
+
+    --> .forEach()
+    const fabricantes = ['Mercedes', 'Audi', 'BMW']
+    function imprimir(nome, indice){
+        console.log(`${indice + 1}. ${nome}`)
+    }
+    fabricantes.forEach(imprimir)
+    fabricantes.forEach(fabricante => console.log(fabricante))
+
+    --> .filter()
+    const notas = [7.1, 3.4, 8.7, 6.2, 6.0]
+    const notasBaixas = notas.filter(nota => nota < 7) //Filtra os valores que atendem a condição(true) e add no array
+    console.log(notasBaixas)
+
+    _________________________________________________________________________________________________________________________________
+
+    FUNÇÕES CONSTRUTORAS
+
+
 */
 
+function Carro(velocidadeMaxima = 200, delta = 5){
+    //atributo privado
+    let velocidadeAtual = 0
 
+    //Método público
+    this.acelerar = () => {
+        if (velocidadeAtual + delta <= velocidadeMaxima) {
+            velocidadeAtual += delta
+        } else {
+            velocidadeAtual = velocidadeAtual
+        }
+    }
 
+    this.getVelocidadeAtual = () => {
+        return velocidadeAtual
+    }
+}
+
+const uno = new Carro
+uno.acelerar()
+console.log(uno.getVelocidadeAtual())
+
+const ferrari = new Carro(350, 20)
+ferrari.acelerar()
+ferrari.acelerar()
+ferrari.acelerar()
+console.log(ferrari.getVelocidadeAtual())
