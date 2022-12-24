@@ -22,7 +22,7 @@
     FUNÇÃO EM JS
 
     - Função sem retorno
-    function imprimirSoma(a, b) {
+    function imprimirSoma(a, b) { --> Esse tipo é carregado primeiro pelo compilador
         console.log(a + b)
     }
 

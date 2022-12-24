@@ -167,33 +167,116 @@
 
     FUNÇÕES CONSTRUTORAS
 
+    class Carro {
+    constructor(velocidadeMaxima = 200, delta = 5) { --> forma mais atual
 
-*/
+    function Carro(velocidadeMaxima = 200, delta = 5){
+        //atributo privado
+        let velocidadeAtual = 0
 
-function Carro(velocidadeMaxima = 200, delta = 5){
-    //atributo privado
-    let velocidadeAtual = 0
+        //Método público
+        this.acelerar = () => {
+            if (velocidadeAtual + delta <= velocidadeMaxima) {
+                velocidadeAtual += delta
+            } else {
+                velocidadeAtual = velocidadeAtual
+            }
+        }
 
-    //Método público
-    this.acelerar = () => {
-        if (velocidadeAtual + delta <= velocidadeMaxima) {
-            velocidadeAtual += delta
-        } else {
-            velocidadeAtual = velocidadeAtual
+        this.getVelocidadeAtual = () => {
+            return velocidadeAtual
         }
     }
 
-    this.getVelocidadeAtual = () => {
-        return velocidadeAtual
+    const uno = new Carro
+    uno.acelerar()
+    console.log(uno.getVelocidadeAtual())
+    
+    const ferrari = new Carro(350, 20)
+    ferrari.acelerar()
+    ferrari.acelerar()
+    ferrari.acelerar()
+    console.log(ferrari.getVelocidadeAtual())
+
+    _________________________________________________________________________________________________________________________________
+
+    CLOSURES
+
+    -- É o escopo criado quando uma função é declarada que permite a função acessar e manipular variáveis externas à função 
+
+    const x = 'Global'
+
+    function fora(){
+        const x = 'Local'  <-- valor exibido devido ao escopo
+        function dentro(){
+            return x
+        }
+        return dentro
     }
-}
 
-const uno = new Carro
-uno.acelerar()
-console.log(uno.getVelocidadeAtual())
+    const minhaFuncao = fora()
+    console.log(minhaFuncao())
 
-const ferrari = new Carro(350, 20)
-ferrari.acelerar()
-ferrari.acelerar()
-ferrari.acelerar()
-console.log(ferrari.getVelocidadeAtual())
+    _________________________________________________________________________________________________________________________________
+
+    FUNÇÃO FACTORY
+
+    --> Responsável por criar um objeto 
+    --> Não sofre com erros no browser por não incoporar o this
+
+    - Factory simples
+    function criarPessoa(){
+        return {
+            nome: 'Ana',
+            sobrenome: 'Silva'
+        }
+    }
+
+    - Factory com parâmetros
+    function criarProduto(nome, preco){
+        const desc = preco * 0.6
+        return {
+            nome,
+            preco,
+            desconto: desc
+        }
+    }
+
+    - Outro exemplo de função construtora
+    function Pessoa(nome){
+        this.nome = nome //Permite alterar o nome da variável
+
+        this.falar = () => {
+            console.log(`Meu nome é ${this.nome}`)
+        }
+    }
+    const p1 = new Pessoa('João')
+    p1.falar()
+
+    _________________________________________________________________________________________________________________________________
+
+    IIFE - Função auto-invocada
+
+    (function(){ //Executada assim que o script for lido e foge do escopo global
+        console.log('Será executado na hora!!')
+        console.log('Foge do escopo mais abrangente')
+    })()
+
+    _________________________________________________________________________________________________________________________________
+
+    CALL & APPLY - Outras formas de chamar/invocar uma função
+
+    function getPreco(imposto = 0, moeda = 'R$'){
+        return `${moeda} ${this.preco * (1 - this.desc) * (1 + imposto)}`
+    }
+
+    const carro = {preco: 49990, desc: 0.20}
+
+    -- A única diferença está na passagem de parâmetros
+    console.log(getPreco.call(carro, 0.17, '$'))
+    console.log(getPreco.apply(carro, [0.15, '$']))
+*/
+
+
+
+
