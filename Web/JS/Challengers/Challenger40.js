@@ -25,3 +25,7 @@ const pG = (n, a1, q) =>{
 
     return `Termos da PA: ${nums} \nSoma dos termos: ${sum}`
 }
+
+
+console.log(pA(4, 2, 3))
+console.log(pG(4, 2, 3))
