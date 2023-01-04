@@ -190,5 +190,129 @@
         filha2.hasOwnProperty(key) ? //Verifica se aquele atributo é herdado ou não
             console.log(key): console.log(`Por herança: ${key}`)
     }
+
+
+    -- Herança parte 4
+    function MeuObjeto() {}
+    console.log(MeuObjeto.prototype)
+
+    const obj1 = new MeuObjeto
+    const obj2 = new MeuObjeto
+    console.log(obj1.__proto__ === obj2.__proto__) //Como um objeto referencia seu protótipo
+
+
+    -- Herança parte 5
+    String.prototype.reverse = function(){
+        return this.split('').reverse().join('')
+    }
+    console.log('Ola Mundo'.reverse())
+
+    Array.prototype.first = function(){
+        return this[0]
+    }
+    console.log([1, 2, 3].first())
+
+    _________________________________________________________________________________________________________________________________
+
+    EVITANDO MODIFICAÇÕES
+
+    >>> Object.preventExtensions - previni o aumento de atributos
+    const produto = Object.preventExtensions(
+        {nome: 'Qualquer', preco: 1.99, tag: 'promoção'}
+    )
+    produto.nome = 'Borracha'
+    produto.descricao = 'Borracha branca'
+    delete produto.tag
+    console.log(produto)
+
+
+    >>> Object.seal - não permiti criar nem excluir atributos do objeto
+    const pessoa = Object.seal({
+        nome: 'Juliana', idade: 35
+    })
+    console.log('Selado: ', Object.isSealed(pessoa))
+
+    pessoa.sobrenome = 'Silva'
+    delete pessoa.nome
+    pessoa.idade = 12
+    console.log(pessoa)
+
+    >>> Object.freeze - um absoluto constante; não permite modificação, adição ou remoção de atributos
+
+    _________________________________________________________________________________________________________________________________
+
+    JSON vs Object
+
+    >>> SITES: json validator, JSONLint
+
+    const obj = {a: 1, b: 2, c: 3, soma(){return a + b + c}}
+    console.log(JSON.stringify(obj)) //Convertendo em formato JSON
+
+    console.log(JSON.parse('{"a": 1, "b": 2, "c": 3}')) //Forma correta de criar um objeto a partir de JSON
+
+    console.log(JSON.parse('{"a": 1.7, "b": "string", "c": true, "d": {}, "e": []}'))
+
+    _________________________________________________________________________________________________________________________________
+
+    CLASSES
+
+    class Lancamento{
+        constructor(nome = 'Genérico', valor = 0){
+            this.nome = nome
+            this.valor = valor
+        }
+    }
+
+    class CicloFinanceiro {
+        constructor(mes, ano){
+            this.mes = mes
+            this.ano = ano
+            this.lancamentos = []
+        }
+
+        addLancamentos(...lancamentos){
+            lancamentos.forEach(l => this.lancamentos.push(l))
+        }
+
+        sumario(){
+            let valorConsolidado = 0
+            this.lancamentos.forEach(l => {
+                valorConsolidado += l.valor
+            })
+            return valorConsolidado
+        }
+    }
+
+
+    const salario = new Lancamento('Salário', 45000)
+    const contaDeLuz = new Lancamento('Luz', -240)
+
+    const contas = new CicloFinanceiro(6, 2018)
+    contas.addLancamentos(salario, contaDeLuz)
+    console.log(contas.sumario())
+
+
+    >>> Classe com herança
+    class Avo{
+        constructor(sobrenome){
+            this.sobrenome = sobrenome
+        }
+    }
+
+    class Pai extends Avo{
+        constructor(sobrenome, profissao = 'Professor'){
+            super(sobrenome) //Para pegar o atributo da classe superior (avo)
+            this.profissao = profissao
+        }
+    }
+
+    class Filho extends Pai{
+        constructor(){
+            super('Silva')
+        }
+    }
+
+    const filho = new Filho
+    console.log(filho)
 */
 
