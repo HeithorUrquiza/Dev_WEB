@@ -99,5 +99,92 @@
 
     const soma2 = e => e + 2
     console.log(array1.map2(soma2))
+
+    _________________________________________________________________________________________________________________________________
+
+    FILTER >> Forma 3 de percorrer um array
+
+    const produtos = [
+        {nome: 'Notebook', preco: 2499, fragil: true},
+        {nome: 'iPad Pro', preco: 4199, fragil: true},
+        {nome: 'Copo de vidro', preco: 12.49, fragil: true},
+        {nome: 'Copo de plástico', preco: 18.99, fragil: false}
+    ]
+
+    const prodCaro = p => p.preco > 500 
+    const prodFragil = p => p.fragil 
+
+    console.log(produtos.filter(prodCaro).filter(prodFragil)) //O resultado para formar o novo array precisa ser true
+
+
+    >> Implementando um Filter
+    Array.prototype.filter2 = function(callback){
+        const newArray = []
+        for(let i = 0; i < this.length; i++){
+            if(callback(this[i], i , this)){
+                newArray.push(this[i])
+            }
+        }
+        return newArray
+    }
+
+    _________________________________________________________________________________________________________________________________
+
+    REDUCE >> Forma 4 de percorrer um array
+
+    const alunos = [
+        {nome: 'João', nota: 7.3, bolsista: false},
+        {nome: 'Maria', nota: 9.2, bolsista: true},
+        {nome: 'Pedro', nota: 9.8, bolsista: false},
+        {nome: 'Ana', nota: 8.7, bolsista: true},
+    ]
+
+    const resultado = alunos.map(a => a.nota).reduce(function(acumulador, atual){
+        console.log(acumulador, atual)
+        return acumulador + atual
+    })
+
+
+    >> Dasafio 1 -- Todos os alunos são bolsistas?
+    const tdsBolsistas = (resultado, bolsista) => resultado && bolsista
+    console.log(alunos.map(a => a.bolsista).reduce(tdsBolsistas))
+
+    >> Dasafio 2 -- Algum aluno é bolsista?
+    const algBolsista = (resultado, bolsista) => resultado || bolsista
+    console.log(alunos.map(a => a.bolsista).reduce(algBolsista))
+
+
+    >> Implementando um Reduce
+    Array.prototype.reduce2 = function(callback, valorInicial = this[0]){
+        const indiceInicial = valorInicial ? 0 : 1
+        let acumulador = valorInicial
+        for(let i = indiceInicial; i < this.length; i++){
+            acumulador = callback(acumulador, this[i], i, this)
+        }
+        return acumulador
+    }
+
+    _________________________________________________________________________________________________________________________________
+
+    IMPERATIVO vs DECLARATIVO
+
 */
 
+
+const alunos = [
+    {nome: 'João', nota: 7.9},
+    {nome: 'Maria', nota: 9.2}
+]
+
+//Imperativo
+let total1 = 0
+for(let i = 0; i < alunos.length; i++){
+    total1 += alunos[i].nota
+}
+console.log(total1 / alunos.length)
+
+//Declarativo
+const getNota = aluno => aluno.nota
+const soma = (total, atual) => total + atual
+const total2 = alunos.map(getNota).reduce(soma)
+console.log(total2 / alunos.length)
