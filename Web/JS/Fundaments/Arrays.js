@@ -168,23 +168,64 @@
 
     IMPERATIVO vs DECLARATIVO
 
+    const alunos = [
+        {nome: 'João', nota: 7.9},
+        {nome: 'Maria', nota: 9.2}
+    ]
+
+    >> Imperativo
+    let total1 = 0
+    for(let i = 0; i < alunos.length; i++){
+        total1 += alunos[i].nota
+    }
+    console.log(total1 / alunos.length)
+
+    >> Declarativo
+    const getNota = aluno => aluno.nota
+    const soma = (total, atual) => total + atual
+    const total2 = alunos.map(getNota).reduce(soma)
+    console.log(total2 / alunos.length)
+
+    _________________________________________________________________________________________________________________________________
+
+    CONCAT
+
+    const filhas = ['Ualskah', 'Cibalena']
+    const filhos = ['Uoxiton', 'Uesclei']
+    const todos = filhas.concat(filhos, 'Fulano')
+    console.log(todos)
+
+    console.log([].concat([1, 2], [3, 4], 5, [[6, 7]]))
+
+    _________________________________________________________________________________________________________________________________
+
+    FLATMAP
+
+    Array.prototype.flatMap = function(callback){
+        return Array.prototype.concat.apply([], this.map(callback))
+    }
+
+    const escola = [{
+        nome: 'Turma M1',
+        alunos: [
+            {nome: 'Gustavo', nota: 8.1},
+            {nome: 'Ana', nota: 9.3}
+        ]
+    }, {
+        nome: 'Turma M2',
+        alunos: [
+            {nome: 'Rebeca', nota:8.9},
+            {nome: 'Roberto', nota: 7.3}
+        ]
+    }]
+
+    const getNotaDoAluno = aluno => aluno.nota
+    const getNotasDaTurma = turma => turma.alunos.map(getNotaDoAluno)
+
+    const notas1 = escola.map(getNotasDaTurma)
+    console.log(notas1)
+
+    const notas2 = escola.flatMap(getNotasDaTurma)
+    console.log(notas2)
 */
 
-
-const alunos = [
-    {nome: 'João', nota: 7.9},
-    {nome: 'Maria', nota: 9.2}
-]
-
-//Imperativo
-let total1 = 0
-for(let i = 0; i < alunos.length; i++){
-    total1 += alunos[i].nota
-}
-console.log(total1 / alunos.length)
-
-//Declarativo
-const getNota = aluno => aluno.nota
-const soma = (total, atual) => total + atual
-const total2 = alunos.map(getNota).reduce(soma)
-console.log(total2 / alunos.length)
